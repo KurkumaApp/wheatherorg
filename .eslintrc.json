@@ -1,7 +1,18 @@
 {
   "root": true,
   "ignorePatterns": ["**/*"],
-  "plugins": ["@nrwl/nx"],
+  "plugins": ["@nrwl/nx", "react", "@typescript-eslint", "prettier"],
+  "extends": [
+    "plugin:react/recommended",
+    "plugin:prettier/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "prettier",
+    "airbnb"
+  ],
   "overrides": [
     {
       "files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
@@ -18,7 +29,13 @@
               }
             ]
           }
-        ]
+        ],
+        "no-unused-vars": "warn",
+        "no-use-before-define": "off",
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "react/jsx-filename-extension": [1, { "extensions": [".jsx", ".tsx"] }],
+        "import/extensions": ["off"],
+        "import/no-unresolved": "off"
       }
     },
     {
