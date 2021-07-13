@@ -8,7 +8,16 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true
+    "noFallthroughCasesInSwitch": true,
+    "paths": {
+      "_/*": ["apps/web-app/src/*"],
+      "_assets/*": ["apps/web-app/src/assets/*"],
+      "_components/*": ["apps/web-app/src/components/*"],
+      "_environments/*": ["apps/web-app/src/environments/*"],
+      "_redux/*": ["apps/web-app/src/redux/*"],
+      "_styles/*": ["apps/web-app/src/styles/*"],
+      "_types/*": ["apps/web-app/src/types/*"]
+    }
   },
   "files": [],
   "include": [],
