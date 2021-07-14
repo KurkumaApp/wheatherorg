@@ -69,12 +69,13 @@
         "import/prefer-default-export": ["off"],
         "no-param-reassign": ["error", { "props": false }],
         "react/prop-types": ["error", { "skipUndeclared": true }],
-        "@typescript-eslint/no-empty-interface": "off",
+        "@typescript-eslint/no-empty-interface": ["warn", { "allowSingleExtends": true }],
         "react/jsx-props-no-spreading": ["off"],
         "camelcase": ["off"],
         "no-useless-return": ["warn"],
         "no-shadow": ["warn"],
-        "no-nested-ternary": ["off"]
+        "no-nested-ternary": ["off"],
+        "react/self-closing-comp": ["off"]
       }
     },
     {

@@ -11,6 +11,8 @@ export const SelectList = styled.div`
 
   position: absolute;
 
+  z-index: 1;
+
   p {
     margin: 0;
 

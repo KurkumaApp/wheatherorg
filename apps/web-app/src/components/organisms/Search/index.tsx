@@ -58,15 +58,11 @@ export const Search: React.FunctionComponent = () => {
     }
   };
 
-  const useEffectOnMount = (effect: React.EffectCallback) => {
-    useEffect(effect, []);
-  };
-
-  useEffectOnMount(() => {
+  useEffect(() => {
     if (city && city.trim().length > 0) {
       dispatch(loadCities());
     }
-  });
+  }, []);
 
   return (
     <Wrapper>
@@ -84,11 +80,11 @@ export const Search: React.FunctionComponent = () => {
             <Divider />
             {cities.length > 0 ? (
               <ul>
-                {cities.map((city) => (
+                {cities.map((item) => (
                   <SelectListItem
-                    key={city.id}
-                    name={city.name}
-                    country={city.sys.country}
+                    key={item.id}
+                    name={item.name}
+                    country={item.sys.country}
                   />
                 ))}
               </ul>

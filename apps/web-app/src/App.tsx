@@ -1,15 +1,11 @@
 import React from 'react';
 
-import { SelectList } from '_components/molecules/SelectList';
-
-import { ReactComponent as SearchIcon } from '_assets/search.svg';
-
 import { Layout } from './components/templates/Layout';
 
 import GlobalStyle from './styles/global-styles';
-import 'sanitize.css';
-import { Search } from './components/organisms/Search';
 import HomePage from './components/pages/HomePage';
+
+import 'sanitize.css';
 
 export const App: React.FunctionComponent = () => (
   <React.Fragment>

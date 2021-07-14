@@ -16,7 +16,8 @@
       "_environments/*": ["apps/web-app/src/environments/*"],
       "_redux/*": ["apps/web-app/src/redux/*"],
       "_styles/*": ["apps/web-app/src/styles/*"],
-      "_types/*": ["apps/web-app/src/types/*"]
+      "_types/*": ["apps/web-app/src/types/*"],
+      "_fonts/*": ["apps/web-app/src/fonts/*"]
     }
   },
   "files": [],
