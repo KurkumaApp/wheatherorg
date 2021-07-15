@@ -7,7 +7,7 @@ import { SyncTime } from './components/SyncTime';
 import { Wrapper } from './components/Wrapper';
 
 interface WheatherSyncProps {
-  lastSync: number;
+  lastSync: Date;
   handleOnClickSync: React.MouseEventHandler<HTMLButtonElement>;
 }
 
@@ -18,7 +18,7 @@ export const WheatherSync: React.FunctionComponent<WheatherSyncProps> = ({
   <Wrapper>
     <SyncTime>
       <span>last sync:</span>{' '}
-      {new Date(lastSync).toLocaleString('en-GB', {
+      {lastSync.toLocaleString('en-GB', {
         timeZone: 'Europe/Kiev',
         day: 'numeric',
         month: 'long',

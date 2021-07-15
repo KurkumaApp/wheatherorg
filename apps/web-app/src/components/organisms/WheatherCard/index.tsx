@@ -5,7 +5,12 @@ import { WheatherStatus } from '_/components/atoms/WheatherStatus';
 import { WheatherSync } from '_/components/atoms/WheatherSync';
 import { WheatherTemp } from '_/components/atoms/WheatherTemp';
 import { WheatherIndicators } from '_/components/molecules/WheatherIndicators';
+import {
+  deleteWheatherCity,
+  loadWheatherCity,
+} from '_/components/pages/HomePage/redux';
 import { IWheatherCity } from '_/components/pages/HomePage/redux/types';
+import { useDispatch } from '_/redux/hooks/useDispatch';
 import { CardBody } from './components/CardBody';
 import { CardHeader } from './components/CardHeader';
 
@@ -22,31 +27,41 @@ export const WheatherCard: React.FunctionComponent<WheatherCardProps> = ({
   temp_min,
   temp_max,
   indicators,
-  lastUpdate,
+  lastSync,
 }) => {
-  const handleOnClickCard = (id: number) => {
+  const dispatch = useDispatch();
+
+  const handleOnClickCard = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    CityId: number
+  ) => {
+    event.preventDefault();
     console.log(
       'You clicked on Wheather Card. Detonation after 1 ... 2 ... 3. Blast your brain))'
     );
-    console.log(`By the way, city id: ${id}.`);
+    console.log(`By the way, city id: ${CityId}.`);
   };
 
   const handleOnClickSync = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
   ) => {
     event.stopPropagation();
-    console.log(event);
+    if (event.ctrlKey === true) {
+      dispatch(deleteWheatherCity(id));
+    } else {
+      dispatch(loadWheatherCity(id));
+    }
   };
 
   return (
     <Wrapper
       id={`${id}-${name}-${country}`}
-      onClick={() => handleOnClickCard(id)}
+      onClick={(event) => handleOnClickCard(event, id)}
     >
       <CardHeader>
         <WheatherLocation city={name} country={country} />
         <WheatherSync
-          lastSync={lastUpdate}
+          lastSync={lastSync}
           handleOnClickSync={handleOnClickSync}
         />
       </CardHeader>

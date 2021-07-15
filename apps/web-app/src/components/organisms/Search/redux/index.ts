@@ -36,10 +36,16 @@ const searchSlice = createSlice({
       state.error = 'City with this name was not found 😭';
       state.loading = false;
     },
+    resetCities: (state) => {
+      state.city = '';
+      state.cities = [];
+      state.error = null;
+      state.loading = false;
+    },
   },
 });
 
-export const { changeCity, loadCities, citiesLoaded, cityError } =
+export const { changeCity, loadCities, citiesLoaded, cityError, resetCities } =
   searchSlice.actions;
 
 export default searchSlice.reducer;

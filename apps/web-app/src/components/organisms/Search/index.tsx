@@ -8,36 +8,18 @@ import { ReactComponent as SearchIcon } from '_assets/search.svg';
 import { Input } from '_/components/molecules/Input';
 
 import { Divider } from '_/components/atoms/Divider';
-import { IconContainer } from '_/components/atoms/Containers/IconContainer';
-import { ReactComponent as LocationCityIcon } from '_assets/location-city.svg';
+import { SelectListItem } from '_/components/molecules/SelectListItem';
+import { loadWheatherCity } from '_/components/pages/HomePage/redux';
+import { selectWheatherCitiesId } from '_/components/pages/HomePage/redux/selectors';
 import { SelectList } from './components/SelectList';
 import { Wrapper } from './components/Wrapper';
-import { changeCity, loadCities } from './redux';
+import { changeCity, loadCities, resetCities } from './redux';
 import {
   selectCities,
   selectCity,
   selectError,
   selectLoading,
 } from './redux/selectors';
-
-interface SelectListItemProps {
-  name: string;
-  country: string;
-}
-
-const SelectListItem: React.FunctionComponent<SelectListItemProps> = ({
-  name,
-  country,
-}) => (
-  <li>
-    <IconContainer>
-      <LocationCityIcon />
-    </IconContainer>
-    <p>
-      {name}, {country}
-    </p>
-  </li>
-);
 
 export const Search: React.FunctionComponent = () => {
   const dispatch = useDispatch();
@@ -47,6 +29,8 @@ export const Search: React.FunctionComponent = () => {
   const cities = useSelector(selectCities);
   const loading = useSelector(selectLoading);
 
+  const citiesId = useSelector(selectWheatherCitiesId);
+
   const onChangeCity = (event: React.ChangeEvent<HTMLInputElement>) => {
     dispatch(changeCity(event.currentTarget.value));
     dispatch(loadCities());
@@ -55,6 +39,13 @@ export const Search: React.FunctionComponent = () => {
   const onSubmitForm = (event?: React.FormEvent<HTMLFormElement>) => {
     if (event !== undefined && event.preventDefault) {
       event.preventDefault();
+    }
+  };
+
+  const handleOnClickListItem = (id: number) => {
+    if (citiesId.find((cityId) => cityId === id) === undefined) {
+      dispatch(resetCities());
+      dispatch(loadWheatherCity(id));
     }
   };
 
@@ -81,11 +72,15 @@ export const Search: React.FunctionComponent = () => {
             {cities.length > 0 ? (
               <ul>
                 {cities.map((item) => (
-                  <SelectListItem
-                    key={item.id}
-                    name={item.name}
-                    country={item.sys.country}
-                  />
+                  <li key={item.id + item.name}>
+                    <SelectListItem
+                      handleOnClickListItem={() =>
+                        handleOnClickListItem(item.id)
+                      }
+                      name={item.name}
+                      country={item.sys.country}
+                    />
+                  </li>
                 ))}
               </ul>
             ) : loading ? (

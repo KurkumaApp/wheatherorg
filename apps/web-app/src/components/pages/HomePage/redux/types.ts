@@ -63,5 +63,5 @@ export interface IWheatherCity {
     title: string;
     value: string;
   }>;
-  lastUpdate: number;
+  lastSync: Date;
 }

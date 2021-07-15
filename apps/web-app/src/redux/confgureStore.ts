@@ -6,6 +6,7 @@ import createSagaMiddleware from 'redux-saga';
 import logger from 'redux-logger';
 
 import searchReducer from '_components/organisms/Search/redux';
+import homePageReducer from '_components/pages/HomePage/redux';
 
 import { watcherSaga } from './sagas/rootSaga';
 
@@ -23,6 +24,7 @@ const configureStore = () => {
   const store = configureStoreOriginal({
     reducer: {
       search: searchReducer,
+      homePage: homePageReducer,
     },
     middleware: [...middleware, ...middlewares],
     devTools: process.env.NODE_ENV !== 'production',

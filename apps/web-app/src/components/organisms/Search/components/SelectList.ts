@@ -38,21 +38,17 @@ export const SelectList = styled.div`
     padding: 0;
     list-style: none;
 
-    padding: 0 15px;
+    padding: 0 11px;
     margin-bottom: 6px;
 
     li {
-      display: flex;
-      align-items: center;
+      margin: 3px 0;
 
-      padding: 4px 0;
+      &:first-child {
+        margin-top: 0;
+      }
 
-      svg {
-        width: 24px;
-        height: 24px;
-
-        fill: #836dc5;
-        margin-right: 7px;
+      &:last-child {
       }
     }
   }
