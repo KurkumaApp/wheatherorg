@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router';
 import { WheatherIndicator } from '_/components/atoms/WheatherIndicator';
 import { WheatherLocation } from '_/components/atoms/WheatherLocation';
 import { WheatherStatus } from '_/components/atoms/WheatherStatus';
@@ -30,16 +31,14 @@ export const WheatherCard: React.FunctionComponent<WheatherCardProps> = ({
   lastSync,
 }) => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const handleOnClickCard = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>,
     CityId: number
   ) => {
     event.preventDefault();
-    console.log(
-      'You clicked on Wheather Card. Detonation after 1 ... 2 ... 3. Blast your brain))'
-    );
-    console.log(`By the way, city id: ${CityId}.`);
+    history.push(`/details/${CityId}`);
   };
 
   const handleOnClickSync = (

@@ -75,7 +75,8 @@
         "no-useless-return": ["warn"],
         "no-shadow": ["warn"],
         "no-nested-ternary": ["off"],
-        "react/self-closing-comp": ["off"]
+        "react/self-closing-comp": ["off"],
+        "@typescript-eslint/no-empty-function": [0]
       }
     },
     {
